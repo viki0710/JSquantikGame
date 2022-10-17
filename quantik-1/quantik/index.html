@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Quantik</title>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+
+    <body class="flex">
+        <div id="menu">
+            <h1>QUANTIK</h1>
+            <label for="p1Name">Player 1:</label><br>
+            <input type="text" id="p1NameInput" name="p1Name" value="Red"><br>
+            <label for="p2Name">Player 2:</label><br>
+            <input type="text" id="p2NameInput" name="p2Name" value="Green">
+
+            <div>
+                <button id="newGameButton" onclick="screenChanger('game')">
+                    New Game
+                </button>
+                <button id="rulesButton" onclick="screenChanger('rules')">
+                    Rules
+                </button>
+            </div>
+        </div>
+
+        <div id="rules" class="hide">
+            <p>
+                Insert game rules here
+            </p>
+            <button onclick="screenChanger('menu')">Back</button>
+        </div>
+        
+        <div id="game" class="hide flex">
+            <div id="gameBoard" class="flex">
+                
+            </div>
+
+            <div id="gameControl" class="flex flex-column">
+                <div id="playerInfo" class="gameControlComponents big flex">
+                    <div id="p1" class="flex">
+                        <img src="white.webp">
+                        <span>
+                            <p class="big">
+                                Player 1
+                            </p>
+                            <p id="p1Name">
+                                {Name}
+                            </p>
+                        </span>
+                    </div>
+                    <div id="p2" class="flex hide">
+                        <img src="black.webp">
+                        <span>
+                            <p class="big">
+                                Player 2
+                            </p>
+                            <p id="p2Name">
+                                {Name}
+                            </p>
+                        </span>
+                    </div>
+                </div>
+                <div id="playerTilesInfo" class="flex flex-column">
+                    <div id="p1Box" class="p1 gameControlComponents flex">
+                        <div id="p1ShapesLabel" class="shapesLabel flex">
+
+                        </div>
+                        <div id="p1Shapes" class="shapesBox flex">
+
+                        </div>
+                    </div>
+                    <div id="p2Box" class="p2 gameControlComponents flex">
+                        <div id="p2ShapesLabel" class="shapesLabel flex">
+
+                        </div>
+                        <div id="p2Shapes" class="shapesBox flex">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="./new_script.js"></script>
+</html>

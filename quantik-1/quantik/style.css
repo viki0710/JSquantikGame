@@ -1,0 +1,268 @@
+:root {
+    --shape-size: 100px;
+    --shape-border-size: 8px;
+    --shape-border-color: black;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background-color: rosybrown;
+}
+
+.hide{
+    display: none !important;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.flex-column{ 
+    flex-flow: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.flex-align-start{ align-items: flex-start }
+.flex-justify-start{ justify-content: flex-start }
+.flex-align-center{ align-items: center }
+.flex-justify-center{ justify-content: center }
+.flex-align-end{ align-items: flex-end }
+.flex-justify-end{ justify-content: flex-end }
+.self-flex-align-start{ align-self: flex-start }
+.self-flex-justify-start{ justify-self: flex-start }
+.self-flex-align-center{ align-self: center }
+.self-flex-justify-center{ justify-self: center }
+.self-flex-align-end{ align-self: flex-end }
+.self-flex-justify-end{ justify-self: flex-end }
+
+#game{
+    width:80%;
+    height: 100%;
+    padding-top: 10vh;
+    background-color: antiquewhite;
+}
+
+#gameControl{ height: 100% }
+
+.gameControlComponents.big{
+    height: calc(75vh * 0.5);
+}
+
+.gameControlComponents { 
+    width: 75vh;
+    height: calc(75vh * 0.25);
+    background-color: white;
+    border-radius: 24px;
+    box-shadow: 4px 4px 2px gray;
+    /* transition: transform 0.5s ease; */
+    align-items: center;
+}
+
+/* .gameControlComponents.isHoverable:hover{
+    transform: scale(1.01, 1.01);
+} */
+
+/* .gameControlComponents:active{
+    transform: scale(0.96, 0.96);
+    transition: none;
+} */
+
+#game > div{
+    flex: 1 1 0;
+}
+
+/* GAME TABLE HERE */
+#gameBoard > table, #gameControl{
+    width: 75vh;
+    height: 75vh;
+}
+
+#gameBoard > table{
+    background-color: #0fe3;
+    box-shadow: 4px 6px 2px black;
+}
+
+.tile{
+    transition: transform 0.5s ease, background-color 0.2s ease;
+    border-radius: 10px;
+}
+.tile.isHoverable:hover{
+    transform: scale(1.05);
+    background-color: red;
+}
+.tile.isHoverable:active{
+    transform: scale(0.95);
+    background-color: #F77;
+    transition: none;
+}
+
+#playerTilesInfo{ margin-top: auto }
+#playerTilesInfo > div{ margin-top: 1vh }
+
+#playerInfo{ justify-content: left }
+
+#playerInfo > *, #playerInfo > * > *{
+    height: 100%;
+}
+
+p.big{
+    font-size: clamp(16px, 2em, 30px);
+    font-weight: bold;
+}
+
+td.light{
+    background-color: #F2D5DB;
+}
+
+td.dark{
+    background-color: #F4ABBA;
+}
+
+.shapesLabel{
+    height: 100%;
+    width: 5%;
+    background-color: var(--inner-color);
+    color: white;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+    writing-mode: vertical-lr;
+    align-items: center;
+}
+
+div.shapes{
+    width: var(--shape-size);
+    height: var(--shape-size);
+    margin: auto;
+    transition: transform 0.2s ease;
+}
+
+.shapesBox{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.shapesBox > div.shapes{
+    margin: calc(var(--shape-size) * 0.1);
+}
+
+.p1 > div{
+    --inner-color: red;
+}
+
+.p2 > div{
+    --inner-color: green;
+}
+
+div.shapes > div.child{
+   width: calc(100% - (var(--shape-border-size) * 2));
+   height: calc(100% - (var(--shape-border-size) * 2));
+}
+
+div.shapes.isHoverable:hover{
+    transform: scale(1.1);
+}
+
+.isHoverable{
+    cursor: pointer;
+}
+
+div.square, div.circle, div.triangle:after, div.plus:after{
+    background-color: var(--inner-color);
+}
+
+div.square, div.circle{
+    border-radius: 10px;
+    border: solid var(--shape-border-size) var(--shape-border-color);
+}
+
+div.triangle, div.plus{
+    border: solid var(--shape-border-size) transparent;
+}
+
+div.triangle:before, div.triangle:after, div.plus:before, div.plus:after{
+    position: absolute;
+    content: '';
+}
+
+div.triangle:before, div.triangle:after{ 
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%); 
+}
+
+div.triangle:before, div.plus:before{
+    background-color: var(--shape-border-color);
+}
+
+div.triangle:before, div.plus:before, div.plus:after{
+    width: var(--shape-size);
+    height: var(--shape-size);
+    margin-left: calc(var(--shape-border-size) * -1);
+    margin-top: calc(var(--shape-border-size) * -1);
+}
+
+div.triangle:after{
+    width: calc(var(--shape-size) - (var(--shape-border-size) * 3));
+    height: calc(var(--shape-size) - (var(--shape-border-size) * 3));
+    margin-left: calc(var(--shape-border-size) * 0.5);
+    margin-top: var(--shape-border-size);
+}
+
+div.circle{ border-radius: 100%; }
+
+div.plus:before{
+    clip-path: polygon(30% 0%, 70% 0%, 70% 30%, 100% 30%, 100% 70%, 70% 70%, 70% 100%, 30% 100%, 30% 70%, 0% 70%, 0% 30%, 30% 30%);
+}
+
+div.plus:after{
+    --int-30: calc(30% + var(--shape-border-size));
+    --int-70: calc(70% - var(--shape-border-size));
+    --int-100: calc(100% - var(--shape-border-size));
+
+    clip-path: polygon(
+        var(--int-30) var(--shape-border-size), 
+        var(--int-70) var(--shape-border-size), 
+        var(--int-70) var(--int-30), 
+        var(--int-100) var(--int-30), 
+        var(--int-100) var(--int-70), 
+        var(--int-70) var(--int-70), 
+        var(--int-70) var(--int-100), 
+        var(--int-30) var(--int-100), 
+        var(--int-30) var(--int-70), 
+        var(--shape-border-size) var(--int-70), 
+        var(--shape-border-size) var(--int-30), 
+        var(--int-30) var(--int-30)
+    );
+}
+
+div.symbolNumberBox{
+    position: relative;
+    margin-left: 70%;
+    margin-top: -30%;
+    width: 40%;
+    height: 40%;
+    background-color: yellow;
+    border-radius: 44px;
+}
+
+div.symbolNumberBox > span{
+    align-self: center;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.highlight{
+    filter: drop-shadow(0 0 10px #FFA) contrast(120%);
+}
+
+.grayscale{
+    filter: grayscale(60%) brightness(40%);
+}
+
+.no-select{
+    pointer-events: none;
+}
